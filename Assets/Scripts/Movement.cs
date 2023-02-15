@@ -19,7 +19,7 @@ public class Movement : MonoBehaviour
     private float _speed = 10f;
     private float _jumpForce = 10f;
 
-    void Start()
+    private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();

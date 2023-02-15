@@ -10,7 +10,7 @@ public class PlayerTracker : MonoBehaviour
     private float _followSpeed = 2f;
     private float _yOffset = 1f;
     
-    void Update()
+    private void Update()
     {
         Vector3 position = _player.position;
         position.z = -10f;

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -9,25 +10,37 @@ public class EnemieMovenemt : MonoBehaviour
 {
     [SerializeField] private Transform[] _movePoints;
 
-    private float _speed = 10f;
-    private int _spot = 0;
+    private SpriteRenderer _spriteRenderer;
 
-    void Update()
+    private float _speed = 10f;
+    private int _spot;
+
+    private void Start()
+    {
+        _spriteRenderer= GetComponent<SpriteRenderer>();
+    }
+
+    private void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, _movePoints[_spot].position, _speed * Time.deltaTime);
 
-        if (Vector2.Distance(transform.position, _movePoints[_spot].position) < 0.2f)
+        if (transform.position == _movePoints[_spot].position)
         {
-            _spot = (_spot == 1) ? 0 : 1;
+            _spot++;
+
+            if(_spot >= _movePoints.Length )
+            {
+                _spot = 0;
+            }
         }
 
         if(transform.position.x < _movePoints[_spot].position.x)
         {
-            transform.localScale = new Vector3(-5f,5,5); 
+            _spriteRenderer.flipX= true;
         }
         else
         {
-            transform.localScale = new Vector3(5f, 5,5);
+            _spriteRenderer.flipX = false;
         }
     }
 }
