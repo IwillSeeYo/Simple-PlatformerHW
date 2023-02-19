@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
 
     private int _gemsCount = 0;
 
-    public event UnityAction<int> GemsChanged;
+    public event UnityAction<int> OnGemsChanged;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
         {
             _gemsCount++;
             Destroy(collision.gameObject);
-            GemsChanged?.Invoke(_gemsCount);
+            OnGemsChanged?.Invoke(_gemsCount);
         }
 
         if(collision.TryGetComponent(out Enemie enemie)) 
