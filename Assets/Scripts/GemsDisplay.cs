@@ -8,12 +8,12 @@ public class GemsDisplay : MonoBehaviour
 
     private void OnEnable()
     {
-        _player.OnGemsChanged += OnGemsGhanged;
+        _player.GemsChanged += OnGemsGhanged;
     }
 
     private void OnDisable()
     {
-        _player.OnGemsChanged -= OnGemsGhanged;
+        _player.GemsChanged -= OnGemsGhanged;
     }
 
     private void OnGemsGhanged(int gemsCount)

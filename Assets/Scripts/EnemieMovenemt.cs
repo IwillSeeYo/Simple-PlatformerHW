@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(SpriteRenderer))]
 [RequireComponent(typeof(Animator))]
 
 public class EnemieMovenemt : MonoBehaviour
@@ -19,6 +20,7 @@ public class EnemieMovenemt : MonoBehaviour
     private void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, _movePoints[_spot].position, _speed * Time.deltaTime);
+        _spriteRenderer.flipX = false;
 
         if (transform.position == _movePoints[_spot].position)
         {
@@ -33,10 +35,6 @@ public class EnemieMovenemt : MonoBehaviour
         if(transform.position.x < _movePoints[_spot].position.x)
         {
             _spriteRenderer.flipX= true;
-        }
-        else
-        {
-            _spriteRenderer.flipX = false;
         }
     }
 }
